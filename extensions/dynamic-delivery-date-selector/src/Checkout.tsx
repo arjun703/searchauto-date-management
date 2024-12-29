@@ -168,10 +168,11 @@ function Extension() {
   console.log(firstValidDateTemp, "firstValidDateTemp")
 
   const [selectedDate, setSelectedDate] = useState<string>(firstValidDateTemp);
+  console.log("applying attribute change")
   applyAttributeChange({
     key: "desired_delivery_date",
     type: "updateAttribute",
-    value: firstValidDateTemp,
+    value: selectedDate,
   });
   // Avoid redundant state updates by comparing the current state
   useEffect(() => {
@@ -182,6 +183,7 @@ function Extension() {
         type: "updateAttribute",
         value: firstValidDateTemp,
       });
+      console.log("inside useEffect")
     }
   }, [firstValidDateTemp]);
 
@@ -194,6 +196,7 @@ function Extension() {
 
   const handleDateChange = (date:string) => {
     setSelectedDate(date)
+    console.log("applying attribute change")
     applyAttributeChange({
       key: "desired_delivery_date",
       type: "updateAttribute",
